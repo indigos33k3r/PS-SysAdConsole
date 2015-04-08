@@ -1,0 +1,18 @@
+UnlockAccounts Functions?
+
+1)	GetLockedOut Click
+
+
+	If(-not $Append) 
+	{
+		$LockedBox.items.Clear()
+	}
+		$LockedUsers = Search-ADAccount -LockedOut | Select -Expand 'SAMAccountName'
+		
+			foreach($Name in $LockedUsers)
+			{	
+				$LockedBox.Items.Add($Name)
+			}
+			
+2) Unlock Accounts
+	Search-AdAccount -LockedOut | Unlock-ADAccount -Confirm
